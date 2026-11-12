@@ -3,9 +3,9 @@ import Input from "../../../components/ui/Input";
 
 export default function AlunosPage() {
     return (
-        <section>
+        <section className="form-page">
             <h1>Cadastro de Alunos</h1>
-            <form>
+            <form className="app-form">
                 <Input 
                     label="Nome"
                     name="nome"

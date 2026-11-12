@@ -5,9 +5,9 @@ import Memo from "../../../components/ui/Memo";
 
 export default function TurmasPage() {
     return (
-        <section>
+        <section className="form-page">
             <h1>Cadastro de Turmas</h1>
-            <form>
+            <form className="app-form">
                 <Input
                     label="Nome da Turma"
                     name="nomeTurma"

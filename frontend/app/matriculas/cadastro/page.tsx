@@ -3,10 +3,10 @@ import Button from "../../../components/ui/Button";
 
 export default function MatriculasPage() {
   return (
-    <section>
+    <section className="form-page">
       <h1>Matricular aluno</h1>
 
-      <form>
+      <form className="app-form">
         <Select
           label="Aluno"
           name="alunoId"
