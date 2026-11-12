@@ -1,4 +1,4 @@
-import RowActions from "@/components/ui/RowActions";
+import RowActions from "../../components/ui/RowActions";
 import Link from "next/link";
 
 const matriculas = [

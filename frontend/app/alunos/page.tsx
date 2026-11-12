@@ -1,3 +1,4 @@
+import RowActions from "../../components/ui/RowActions";
 import Link from "next/link";
 
 const alunos = [
@@ -32,6 +33,7 @@ export default function AlunosPage() {
               <th scope="col">E-mail</th>          
               <th scope="col">Data de Nascimento</th>    
               <th scope="col">Data de Cadastro</th>
+              <th scope="col">Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +45,12 @@ export default function AlunosPage() {
                 <td>{aluno.email}</td>
                 <td>{aluno.dataNascimento}</td>
                 <td>{aluno.dataCadastro}</td>
+                <td>
+                  <RowActions
+                    label={aluno.nome}
+                    editHref={`/alunos/${aluno.id}/editar`}
+                  />
+                </td>
               </tr>
             ))}
           </tbody>

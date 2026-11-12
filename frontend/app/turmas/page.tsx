@@ -1,5 +1,5 @@
 import Link from "next/link";
-import RowActions from "@/components/ui/RowActions";
+import RowActions from "../../components/ui/RowActions";
 
 const turmas = [
   { id: 1, nome: "Turma A", descricao: "Descrição da Turma A", periodo: "Diurno", capacidade: 30, dataInicio: "2023-01-01", dataTermino: "2023-06-30", ativo: true },
