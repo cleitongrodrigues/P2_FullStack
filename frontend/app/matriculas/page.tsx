@@ -1,26 +1,24 @@
+import RowActions from "@/components/ui/RowActions";
 import Link from "next/link";
 
 const matriculas = [
   {
     id: 1,
-    alunoId: 1,
-    turmaId: 1,
+    aluno: "Aluno 1",
+    turma: "Turma A",
     dataMatricula: "2026-11-10T09:30:00-03:00",
-    ativo: true,
   },
   {
     id: 2,
-    alunoId: 2,
-    turmaId: 2,
+    aluno: "Aluno 2",
+    turma: "Turma B",
     dataMatricula: "2026-11-11T14:15:00-03:00",
-    ativo: true,
   },
   {
     id: 3,
-    alunoId: 1,
-    turmaId: 2,
+    aluno: "Aluno 3",
+    turma: "Turma C",
     dataMatricula: "2026-11-12T08:00:00-03:00",
-    ativo: false,
   },
 ];
 
@@ -49,31 +47,28 @@ export default function MatriculasPage() {
           <thead>
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">AlunoID</th>
-              <th scope="col">TurmaID</th>
+              <th scope="col">Aluno</th>
+              <th scope="col">Turma</th>
               <th scope="col">Data da matrícula</th>
-              <th scope="col">Ativo</th>
+              <th scope="col">Ações</th>
             </tr>
           </thead>
           <tbody>
             {matriculas.map((matricula) => (
               <tr key={matricula.id}>
                 <td>{matricula.id}</td>
-                <td>{matricula.alunoId}</td>
-                <td>{matricula.turmaId}</td>
+                <td>{matricula.aluno}</td>
+                <td>{matricula.turma}</td>
                 <td>
                   <time dateTime={matricula.dataMatricula}>
                     {dateFormatter.format(new Date(matricula.dataMatricula))}
                   </time>
                 </td>
                 <td>
-                  <span
-                    className={`status-badge ${
-                      matricula.ativo ? "status-active" : "status-inactive"
-                    }`}
-                  >
-                    {matricula.ativo ? "Ativa" : "Inativa"}
-                  </span>
+                  <RowActions
+                    label={matricula.turma}
+                    editHref={`/turmas/${matricula.turma}/editar`}
+                  />
                 </td>
               </tr>
             ))}

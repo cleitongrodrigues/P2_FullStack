@@ -5,7 +5,6 @@ CREATE TABLE Alunos (
     Email          VARCHAR(80) NOT NULL UNIQUE,
     DataNascimento DATETIME    NOT NULL,
     DataCadastro   DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Ativo          BOOLEAN  DEFAULT TRUE,
     PRIMARY KEY (ID)
 );
 
@@ -28,7 +27,6 @@ CREATE TABLE Matriculas (
     AlunoID       INTEGER  NOT NULL,
     TurmaID       INTEGER  NOT NULL,
     DataMatricula DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    Ativo         BOOLEAN           DEFAULT TRUE,
     PRIMARY KEY (ID),
     FOREIGN KEY (AlunoID) REFERENCES Alunos(ID),
     FOREIGN KEY (TurmaID) REFERENCES Turmas(ID)
