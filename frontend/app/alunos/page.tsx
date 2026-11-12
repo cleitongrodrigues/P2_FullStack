@@ -26,8 +26,8 @@ export default function AlunosPage() {
         {alunos.map((aluno) => (
           <Card key={aluno.id}>
             <h2>{aluno.nome}</h2>
-            <p>{aluno.email}</p>
             <p>{aluno.telefone}</p>
+            <p>{aluno.email}</p>            
           </Card>
         ))}
       </div>
