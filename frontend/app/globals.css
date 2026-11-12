@@ -119,6 +119,77 @@ body {
   border-bottom: 0;
 }
 
+.row-actions {
+  display: inline-block;
+  width: 34px;
+  min-width: 34px;
+  vertical-align: middle;
+}
+
+.row-actions-trigger {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.row-actions-trigger:hover,
+.row-actions-trigger:focus-visible {
+  background: #f8faff;
+  outline: 2px solid rgb(36 84 223 / 20%);
+}
+
+.row-actions-menu {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgb(29 43 72 / 12%);
+  transform: translateY(-50%);
+}
+
+.row-actions-menu a,
+.row-actions-menu button {
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--foreground);
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.row-actions-menu a:hover,
+.row-actions-menu a:focus-visible {
+  background: #eef3ff;
+  outline: none;
+}
+
+.row-actions-menu .row-actions-remove {
+  color: #b42318;
+}
+
+.row-actions-menu .row-actions-remove:hover,
+.row-actions-menu .row-actions-remove:focus-visible {
+  background: #fff1f0;
+  outline: none;
+}
+
 .status-badge {
   display: inline-block;
   padding: 4px 9px;
