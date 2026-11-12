@@ -75,6 +75,37 @@ body {
   line-height: 1.6;
 }
 
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  color: var(--foreground);
+  font-size: 18px;
+}
+
+.card p + p {
+  margin-top: 6px;
+}
+
 .form-field {
   display: flex;
   flex-direction: column;
@@ -113,6 +144,9 @@ body {
 }
 
 .button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 42px;
   padding: 10px 18px;
   border: 0;
@@ -123,6 +157,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
   transition: background-color 150ms ease, box-shadow 150ms ease;
 }
 
@@ -163,5 +198,10 @@ body {
 
   .conteudo {
     padding: 24px 18px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
