@@ -83,29 +83,6 @@ body {
   margin-bottom: 24px;
 }
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-}
-
-.card {
-  padding: 20px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: #ffffff;
-}
-
-.card h2 {
-  margin: 0 0 12px;
-  color: var(--foreground);
-  font-size: 18px;
-}
-
-.card p + p {
-  margin-top: 6px;
-}
-
 .table-container {
   overflow-x: auto;
   border: 1px solid var(--border);
