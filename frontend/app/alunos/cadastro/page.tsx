@@ -1,16 +1,42 @@
+"use client";
+
+import { useState, type FormEvent } from "react";
 import Button from "../../../components/ui/Button";
 import Input from "../../../components/ui/Input";
+import {
+    validarAluno,
+    type AlunoErrors,
+    type AlunoFormValues,
+} from "../../../lib/validations";
 
 export default function AlunosPage() {
+    const [errors, setErrors] = useState<AlunoErrors>({});
+
+    function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        const formData = new FormData(event.currentTarget);
+        const aluno: AlunoFormValues = {
+            nome: String(formData.get("nome") ?? ""),
+            telefone: String(formData.get("telefone") ?? ""),
+            email: String(formData.get("email") ?? ""),
+            dataNascimento: String(formData.get("dataNascimento") ?? ""),
+        };
+        const validationErrors = validarAluno(aluno);
+
+        setErrors(validationErrors);
+    }
+
     return (
         <section className="form-page">
             <h1>Cadastro de Alunos</h1>
-            <form className="app-form">
+            <form className="app-form" noValidate onSubmit={handleSubmit}>
                 <Input 
                     label="Nome"
                     name="nome"
                     placeholder="Digite o nome do aluno" 
                     required 
+                    error={errors.nome}
                 />
 
                 <Input 
@@ -18,6 +44,7 @@ export default function AlunosPage() {
                     name="telefone"
                     placeholder="Digite o telefone do aluno" 
                     required 
+                    error={errors.telefone}
                 />
 
                 <Input 
@@ -26,6 +53,7 @@ export default function AlunosPage() {
                     type="email"
                     placeholder="Digite o email do aluno" 
                     required 
+                    error={errors.email}
                 />     
 
                 <Input
@@ -33,6 +61,7 @@ export default function AlunosPage() {
                     name="dataNascimento"
                     type="date"
                     required
+                    error={errors.dataNascimento}
                 />        
 
                 <Button label="Cadastrar Aluno" type="submit" />  
