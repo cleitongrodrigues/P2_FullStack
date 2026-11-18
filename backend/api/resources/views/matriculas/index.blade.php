@@ -28,17 +28,12 @@
             <tbody>
                 @forelse($matriculas ?? [] as $matricula)
                     <tr>
-                        <td>{{ $matricula->id ?? $matricula->ID }}</td>
-                        <td>{{ $matricula->aluno->nome ?? $matricula->aluno_nome ?? $matricula->aluno ?? ('Aluno #' . ($matricula->aluno_id ?? $matricula->AlunoID)) }}</td>
-                        <td>{{ $matricula->turma->nome ?? $matricula->turma_nome ?? $matricula->turma ?? ('Turma #' . ($matricula->turma_id ?? $matricula->TurmaID)) }}</td>
+                        <td>{{ $matricula->id }}</td>
+                        <td>{{ $matricula->aluno->nome ?? 'Aluno não encontrado' }}</td>
+                        <td>{{ $matricula->turma->nome ?? 'Turma não encontrada' }}</td>
+                        <td>{{ $matricula->dataMatricula ? date('d/m/Y H:i', strtotime($matricula->dataMatricula)) : '-' }}</td>
                         <td>
-                            @php
-                                $d = $matricula->dataMatricula ?? $matricula->data_matricula ?? $matricula->created_at ?? $matricula->DataMatricula ?? null;
-                            @endphp
-                            {{ $d ? date('d/m/Y H:i', strtotime($d)) : '-' }}
-                        </td>
-                        <td>
-                            <form action="{{ url('/matriculas/' . ($matricula->id ?? $matricula->ID)) }}" method="POST" style="display:inline;" onsubmit="return confirm('Deseja realmente cancelar esta matrícula?');">
+                            <form action="{{ url('/matriculas/' . $matricula->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Deseja realmente cancelar esta matrícula?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="button-danger">Excluir</button>

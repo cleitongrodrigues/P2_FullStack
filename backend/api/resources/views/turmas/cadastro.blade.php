@@ -6,7 +6,7 @@
 <section class="form-page">
     <h1>Cadastro de Turmas</h1>
 
-    <form class="app-form" action="{{ url('/turmas') }}" method="POST" novalidate>
+    <form class="app-form" action="{{ url('/turmas') }}" method="POST">
         @csrf
 
         <div class="form-field">
@@ -16,26 +16,18 @@
                 name="nome"
                 type="text"
                 placeholder="Digite o nome da turma"
-                value="{{ old('nome') }}"
                 required
-                aria-invalid="{{ $errors->has('nome') ? 'true' : 'false' }}"
             />
-            @error('nome')
-                <p class="form-field-error" role="alert">{{ $message }}</p>
-            @enderror
         </div>
 
         <div class="form-field">
             <label for="periodo">Período</label>
-            <select id="periodo" name="periodo" required aria-invalid="{{ $errors->has('periodo') ? 'true' : 'false' }}">
+            <select id="periodo" name="periodo" required>
                 <option value="">Selecione o período</option>
-                <option value="M" {{ old('periodo') === 'M' ? 'selected' : '' }}>Matutino</option>
-                <option value="N" {{ old('periodo') === 'N' ? 'selected' : '' }}>Noturno</option>
-                <option value="D" {{ old('periodo') === 'D' ? 'selected' : '' }}>Diurno</option>
+                <option value="M">Matutino</option>
+                <option value="N">Noturno</option>
+                <option value="D">Diurno</option>
             </select>
-            @error('periodo')
-                <p class="form-field-error" role="alert">{{ $message }}</p>
-            @enderror
         </div>
 
         <div class="form-field">
@@ -44,14 +36,9 @@
                 id="capacidade"
                 name="capacidade"
                 type="number"
-                placeholder="Digite a capacidade da turma"
-                value="{{ old('capacidade') }}"
+                placeholder="Digite a capacidade de alunos"
                 required
-                aria-invalid="{{ $errors->has('capacidade') ? 'true' : 'false' }}"
             />
-            @error('capacidade')
-                <p class="form-field-error" role="alert">{{ $message }}</p>
-            @enderror
         </div>
 
         <div class="form-field">
@@ -61,10 +48,7 @@
                 name="descricao"
                 placeholder="Digite a descrição da turma"
                 rows="4"
-            >{{ old('descricao') }}</textarea>
-            @error('descricao')
-                <p class="form-field-error" role="alert">{{ $message }}</p>
-            @enderror
+            ></textarea>
         </div>
 
         <div class="form-field">
@@ -73,13 +57,7 @@
                 id="dataInicio"
                 name="dataInicio"
                 type="date"
-                value="{{ old('dataInicio') }}"
-                required
-                aria-invalid="{{ $errors->has('dataInicio') ? 'true' : 'false' }}"
             />
-            @error('dataInicio')
-                <p class="form-field-error" role="alert">{{ $message }}</p>
-            @enderror
         </div>
 
         <div class="form-field">
@@ -88,13 +66,7 @@
                 id="dataFim"
                 name="dataFim"
                 type="date"
-                value="{{ old('dataFim') }}"
-                required
-                aria-invalid="{{ $errors->has('dataFim') ? 'true' : 'false' }}"
             />
-            @error('dataFim')
-                <p class="form-field-error" role="alert">{{ $message }}</p>
-            @enderror
         </div>
 
         <div class="form-actions">

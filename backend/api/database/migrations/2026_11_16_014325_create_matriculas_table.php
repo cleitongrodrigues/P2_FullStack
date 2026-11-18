@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('matriculas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('aluno_id')->constrained('alunos')->onDelete('cascade');
+            $table->foreignId('turma_id')->constrained('turmas')->onDelete('cascade');
+            $table->timestamp('dataMatricula')->useCurrent();
             $table->timestamps();
         });
     }

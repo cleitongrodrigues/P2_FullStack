@@ -4,7 +4,7 @@
 
 @section('content')
 <section>
-    <header className="page-header" class="page-header">
+    <header class="page-header">
         <div>
             <h1>Turmas</h1>
             <p>Consulte as turmas cadastradas.</p>
@@ -31,31 +31,20 @@
             <tbody>
                 @forelse($turmas ?? [] as $turma)
                     <tr>
-                        <td>{{ $turma->id ?? $turma->ID }}</td>
-                        <td>{{ $turma->nome ?? $turma->Nome }}</td>
+                        <td>{{ $turma->id }}</td>
+                        <td>{{ $turma->nome }}</td>
                         <td>
                             @php
-                                $p = $turma->periodo ?? $turma->Periodo ?? '';
-                                $periodoMap = ['M' => 'Matutino', 'N' => 'Noturno', 'D' => 'Diurno'];
+                                $periodos = ['M' => 'Matutino', 'N' => 'Noturno', 'D' => 'Diurno'];
                             @endphp
-                            {{ $periodoMap[$p] ?? $p }}
+                            {{ $periodos[$turma->periodo] ?? $turma->periodo }}
                         </td>
-                        <td>{{ $turma->capacidade ?? $turma->Capacidade }}</td>
+                        <td>{{ $turma->capacidade }}</td>
+                        <td>{{ $turma->dataInicio ? date('d/m/Y', strtotime($turma->dataInicio)) : '-' }}</td>
+                        <td>{{ $turma->dataFim ? date('d/m/Y', strtotime($turma->dataFim)) : '-' }}</td>
+                        <td>{{ $turma->descricao ?? '-' }}</td>
                         <td>
-                            @php
-                                $ini = $turma->dataInicio ?? $turma->data_inicio ?? $turma->DataInicio ?? null;
-                            @endphp
-                            {{ $ini ? date('d/m/Y', strtotime($ini)) : '-' }}
-                        </td>
-                        <td>
-                            @php
-                                $fim = $turma->dataFim ?? $turma->data_fim ?? $turma->DataFim ?? null;
-                            @endphp
-                            {{ $fim ? date('d/m/Y', strtotime($fim)) : '-' }}
-                        </td>
-                        <td>{{ $turma->descricao ?? $turma->Descricao ?? '-' }}</td>
-                        <td>
-                            <form action="{{ url('/turmas/' . ($turma->id ?? $turma->ID)) }}" method="POST" style="display:inline;" onsubmit="return confirm('Deseja realmente excluir a turma {{ $turma->nome ?? $turma->Nome }}?');">
+                            <form action="{{ url('/turmas/' . $turma->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Deseja realmente excluir a turma {{ $turma->nome }}?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="button-danger">Excluir</button>

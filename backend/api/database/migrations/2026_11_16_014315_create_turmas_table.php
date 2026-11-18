@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('turmas', function (Blueprint $table) {
             $table->id();
+            $table->string('nome', 80);
+            $table->char('periodo', 1); // M, N, D
+            $table->string('descricao', 255)->nullable();
+            $table->integer('capacidade');
+            $table->date('dataInicio')->nullable();
+            $table->date('dataFim')->nullable();
+            $table->boolean('ativo')->default(true);
             $table->timestamps();
         });
     }
